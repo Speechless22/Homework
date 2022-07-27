@@ -1,0 +1,70 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              05/20/2022 14:31:51 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\build\Keil\main.obj
+COMPILER INVOKED BY: C:\Program Files\Keil_v5\C51\BIN\C51.EXE src/main.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(../../../.
+                    -./../../Program Files/Keil_v5/C51/INC;src) DEBUG PRINT(.\build\Keil\main.lst) TABS(2) OBJECT(.\build\Keil\main.obj)
+
+line level    source
+
+   1          #include< reg51.h >
+   2          #define uchar unsigned char 
+   3          sbit S1=P1^0;
+   4          uchar code seg[]=
+   5          {0xC0,0xF9,0xA4,0xB0,0x99,0x92,0x82,0xF8,0x80,0x90};
+   6          void delayms(uchar ms)
+   7          {
+   8   1         uchar i;
+   9   1         while(ms--)
+  10   1         for(i=0;i<123;i++);
+  11   1      }
+  12          uchar key_scan(void)
+  13          {
+  14   1         static kp=0;
+  15   1         if((P1&0x01)!=0x01)
+  16   1         {
+  17   2                   delayms(10);
+  18   2             if(((P1&0x01)!=0x01)&&(kp==0))
+  19   2             {
+  20   3                 kp=1;
+  21   3               return 1;
+  22   3             }
+  23   2         }
+  24   1         else kp=0;
+  25   1         return 0;
+  26   1      }
+  27          void main(void)
+  28          {
+  29   1          uchar key_val;
+  30   1        uchar num=0;
+  31   1        while(1)
+  32   1        {
+  33   2                key_val=key_scan();
+  34   2            if(key_val==1)
+  35   2            {
+  36   3                if(++num==10) num=0;
+  37   3            }
+  38   2            P0=seg[num];
+  39   2        }
+  40   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     91    ----
+   CONSTANT SIZE    =     10    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              05/20/2022 14:31:51 PAGE 2   
+
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

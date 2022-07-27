@@ -1,0 +1,78 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              05/20/2022 11:07:46 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\build\Keil\main.obj
+COMPILER INVOKED BY: C:\Program Files\Keil_v5\C51\BIN\C51.EXE src/main.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(../../../.
+                    -./../../Program Files/Keil_v5/C51/INC;src) DEBUG PRINT(.\build\Keil\main.lst) TABS(2) OBJECT(.\build\Keil\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #define uchar unsigned char
+   3          #define uint unsigned int
+   4          sbit L1=P1^0;
+   5          sbit L2=P1^1;
+   6          sbit L3=P1^2;
+   7          sbit L4=P1^3;          // 定义4根列线 //
+   8           uchar  jyw[16]={0xc0,0xf9,0xa4,0xb0,            //数码管显示值０－Ｆ对应的段码值//
+   9                           0x99,0x92,0x82,0xf8,
+  10                           0x80,0x90,0x88,0x83,
+  11                           0xc6,0xa1,0x86,0x8e};
+  12          
+  13          void delayms(uchar ms)                   //延时子程序//
+  14           {
+  15   1         uint j;
+  16   1         while(ms--)
+  17   1         for(j=0;j<123;j++);
+  18   1       }
+  19          
+  20             main()                      //主程序//
+  21             {
+  22   1          uchar temp;
+  23   1          uchar i;
+  24   1          while(1)
+  25   1         {
+  26   2                        P1=0xef;             //行扫描初值//       1110 1111
+  27   2                        for(i=0;i<=3;i++)  //按键阵行扫描,一共四行 //
+  28   2                      {  
+  29   3                 if (L1==0) P0=jyw[i*4+0];        //检测第一列有无按键按下，若有，对应的键值分�
+             -��为0（一行）,4（二行）,8（三行），C（四行）//
+  30   3                         if (L2==0) P0=jyw[i*4+1];        //检测第二列有无按键按下，若有，对应�
+             -��键值分别为1（一行）,5（二行）,9（三行），d（四行）//
+  31   3                         if (L3==0) P0=jyw[i*4+2];        //检测第三列有无按键按下，若有，对应�
+             -��键值分别为2（一行）,6（二行）,A（三行），E（四行）//
+  32   3                         if (L4==0) P0=jyw[i*4+3];        //检测第四列有无按键按下，若有，对应�
+             -��键值分别为3（一行）,7（二行）,b（三行），F（四行）//
+  33   3                         delayms(10);
+  34   3                         temp=P1;             //temp=1110 1111
+  35   3                         temp=temp|0x0f;          //temp=1110 1111
+  36   3                         temp=temp<<1;          // temp=1101 1110
+  37   3                         temp=temp|0x0f;          // temp=1101 1111
+  38   3                         P1=temp;                       //下一行行扫描的值，将P1.0-P1.3的值左移一
+             -位//  P1=1101 1111
+  39   3      
+  40   3                      }
+  41   2      
+  42   2                  }
+  43   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    119    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   MAIN                                                              05/20/2022 11:07:46 PAGE 2   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     16    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

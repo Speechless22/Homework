@@ -1,0 +1,4 @@
+".\build\Keil\main.obj" 
+TO ".\build\Keil\4-1" 
+
+PRINT(".\build\Keil\4-1.map")

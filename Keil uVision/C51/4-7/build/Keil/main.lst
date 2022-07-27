@@ -1,0 +1,93 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              05/26/2022 08:20:13 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\build\Keil\main.obj
+COMPILER INVOKED BY: C:\Program Files\Keil_v5\C51\BIN\C51.EXE src/main.c OMF2 OPTIMIZE(8,SPEED) BROWSE INCDIR(../../../.
+                    -./../../Program Files/Keil_v5/C51/INC;src) DEBUG PRINT(.\build\Keil\main.lst) TABS(2) OBJECT(.\build\Keil\main.obj)
+
+line level    source
+
+   1          #include<REG51.H>
+   2          #define uchar unsigned char
+   3          #define uint unsigned int
+   4          sbit RS=P1^0;
+   5          sbit RW=P1^1;
+   6          sbit E=P1^2;
+   7          uchar code str[]="0~99 stopwatch:";
+   8          uchar sec=0;
+   9          uchar con=0;
+  10          void delayms(uint ms)           //延时子函数
+  11          {
+  12   1          uchar i;
+  13   1          while(ms--)
+  14   1          for(i=0;i<123;i++);
+  15   1      }
+  16          void w_com(uchar com)           //写指令寄存器函数
+  17          {
+  18   1          RS=0;
+  19   1          RW=0;
+  20   1          E=1;
+  21   1          P0=com;
+  22   1          E=0;
+  23   1          delayms(1);
+  24   1      }
+  25          void w_dat(uchar dat)           //写数据寄存器函数
+  26          {
+  27   1          RS=1;
+  28   1          RW=0;
+  29   1          E=1;
+  30   1          P0=dat;
+  31   1          E=0;
+  32   1          delayms(1);
+  33   1      }
+  34          void lcd_ini(void)          //LCD初始化函数
+  35          {
+  36   1          delayms(10);
+  37   1          w_com(0x38);
+  38   1          delayms(10);
+  39   1          w_com(0x0c);
+  40   1          delayms(10);
+  41   1          w_com(0x06);
+  42   1          delayms(10);
+  43   1          w_com(0x10);
+  44   1          delayms(10);
+  45   1          w_com(0x38);
+  46   1          delayms(10);
+  47   1      }
+  48          void main(void)
+  49          {
+  50   1          uchar i,num;
+  51   1          lcd_ini();
+  52   1          w_com(0x80);
+  53   1          for(i=0;str[i]!='\0';i++)
+  54   1          w_dat(str[i]);
+C51 COMPILER V9.60.0.0   MAIN                                                              05/26/2022 08:20:13 PAGE 2   
+
+  55   1          while(1)
+  56   1          {
+  57   2              w_com(0xc7);
+  58   2              w_dat(num/10+0x30);
+  59   2              w_dat(num%10+0x30);
+  60   2              delayms(1000);
+  61   2              if(++num==100)num=0;
+  62   2          }
+  63   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    176    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
