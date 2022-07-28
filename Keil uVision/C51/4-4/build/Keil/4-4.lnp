@@ -1,4 +1,0 @@
-".\build\Keil\main.obj" 
-TO ".\build\Keil\4-4" 
-
-PRINT(".\build\Keil\4-4.map")
