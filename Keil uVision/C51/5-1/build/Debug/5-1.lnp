@@ -1,3 +1,0 @@
-
-.\build\Debug\src\main.o TO .\build\Debug\5-1
-PRINT(.\build\Debug\5-1.map) REMOVEUNUSED
