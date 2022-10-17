@@ -222,7 +222,7 @@
                     <asp:TableRow>
                         <asp:TableCell HorizontalAlign="Center" Font-Names="Times new roman">42</asp:TableCell>
                         <asp:TableCell HorizontalAlign="Center">厦</asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;	厦门银行国际大厦</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;厦门银行国际大厦</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell HorizontalAlign="Center" Font-Names="Times new roman">43</asp:TableCell>
