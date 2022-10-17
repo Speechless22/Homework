@@ -1,0 +1,24 @@
+--cpu Cortex-M3
+"myproject_exti\startup_stm32f103xe.o"
+"myproject_exti\main.o"
+"myproject_exti\gpio.o"
+"myproject_exti\stm32f1xx_it.o"
+"myproject_exti\stm32f1xx_hal_msp.o"
+"myproject_exti\stm32f1xx_hal_gpio_ex.o"
+"myproject_exti\stm32f1xx_hal_tim.o"
+"myproject_exti\stm32f1xx_hal_tim_ex.o"
+"myproject_exti\stm32f1xx_hal.o"
+"myproject_exti\stm32f1xx_hal_rcc.o"
+"myproject_exti\stm32f1xx_hal_rcc_ex.o"
+"myproject_exti\stm32f1xx_hal_gpio.o"
+"myproject_exti\stm32f1xx_hal_dma.o"
+"myproject_exti\stm32f1xx_hal_cortex.o"
+"myproject_exti\stm32f1xx_hal_pwr.o"
+"myproject_exti\stm32f1xx_hal_flash.o"
+"myproject_exti\stm32f1xx_hal_flash_ex.o"
+"myproject_exti\stm32f1xx_hal_exti.o"
+"myproject_exti\system_stm32f1xx.o"
+--strict --scatter "MyProject_EXTI\MyProject_EXTI.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "MyProject_EXTI.map" -o MyProject_EXTI\MyProject_EXTI.axf
