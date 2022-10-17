@@ -17,8 +17,8 @@
                     </asp:TableHeaderRow>
                     <asp:TableRow>
                         <asp:TableCell HorizontalAlign="Center" Font-Names="Times new roman">1</asp:TableCell> 
-                        <asp:TableCell HorizontalAlign ="Center"></asp:TableCell> 
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell HorizontalAlign ="Center">阁</asp:TableCell> 
+                        <asp:TableCell>&nbsp;&nbsp;滕王阁</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">2</asp:TableCell>
