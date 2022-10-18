@@ -10,7 +10,7 @@
             <div>
                 <br /><br />
                 <asp:Table ID="building01" runat="server" HorizontalAlign="Center" Border="1" Width ="60%" Height="500px">
-                    <asp:TableHeaderRow BackColor="#BAE18F" Font-Size="XX-Large">
+                    <asp:TableHeaderRow BackColor="#87CEFA" Font-Size="XX-Large">
                         <asp:TableHeaderCell>序号</asp:TableHeaderCell>
                         <asp:TableHeaderCell>建筑</asp:TableHeaderCell>
                         <asp:TableHeaderCell>举例</asp:TableHeaderCell>
