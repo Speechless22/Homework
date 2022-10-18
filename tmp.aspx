@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>建筑的称谓</title>
     </head>
     <body>
@@ -212,7 +212,7 @@
                     <asp:TableRow>
                         <asp:TableCell HorizontalAlign="Center" Font-Names="Times new roman">40</asp:TableCell>
                         <asp:TableCell HorizontalAlign="Center">屋</asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;房屋</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;英国肯特红屋</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell HorizontalAlign="Center" Font-Names="Times new roman">41</asp:TableCell>
@@ -281,83 +281,83 @@
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">54</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">河</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;京杭大运河</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">55</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">社</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;伏见稻荷大社</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">56</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">居</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;千本鸟居</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">57</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">场</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;古罗马竞技场</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">58</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">屠</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;婆罗浮屠</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">59</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">墅</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;圆厅别墅</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">60</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">寓</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;米拉公寓</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell HorizontalAlign="Center" Font-Names="Times new roman">61</asp:TableCell> 
-                        <asp:TableCell HorizontalAlign ="Center"></asp:TableCell> 
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell HorizontalAlign ="Center">舍</asp:TableCell> 
+                        <asp:TableCell>&nbsp;&nbsp;包豪斯学校校舍</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">62</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">宅</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;范斯沃斯住宅</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">63</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">心</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;纽约世贸中心</asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">64</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">部</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;法兰克福商业银行总部</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">65</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">墓</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;拿破仑墓</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">66</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">学</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;清华大学,北京大学</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">67</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">厅</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;维也纳金色大厅</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">68</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">址</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;圆明园遗址</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">69</asp:TableCell>
-                        <asp:TableCell  HorizontalAlign="Center"></asp:TableCell>
-                        <asp:TableCell>&nbsp;&nbsp;</asp:TableCell>
+                        <asp:TableCell  HorizontalAlign="Center">迹</asp:TableCell>
+                        <asp:TableCell>&nbsp;&nbsp;亚特兰城遗迹</asp:TableCell>
                     </asp:TableRow>                
                     <asp:TableRow>
                         <asp:TableCell  HorizontalAlign="Center" Font-Names="Times New Roman">70</asp:TableCell>
