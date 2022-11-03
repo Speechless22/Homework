@@ -46,7 +46,18 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+#define Vref 3.3			//参考电压
+#define Res 10000			//参考电阻
+#define BaseDC 500		//占空比基准值
+#define Factor 10			//系数
+#define BaseNum 20		//预设温度
 
+uint16_t ADC_Value;			//存放A/D转换结果
+uint16_t Vrt;						//存放热敏电阻两端电压
+uint16_t Rrt;						//存放热敏电阻阻值
+uint16_t GetTemp;				//当前温度
+
+uint16_t DC;						//定义一个PWM占空比变量			
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -67,7 +78,6 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -93,7 +103,8 @@ int main(void)
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+	HAL_ADCEx_Calibration_Start(&hadc1);					//ADC1校准
+	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);			//开启定时器2通道3输出PWM波形
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -103,6 +114,23 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+		HAL_Delay(1000);
+		HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&ADC_Value,sizeof(&ADC_Value));			//启动ADC1的DMA转换
+		HAL_ADC_PollForConversion(&hadc1,50);																		//等待转换结束，超时时间50s
+		if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc1),HAL_ADC_STATE_REG_EOC))			//判断是否设置转换完成标志位，HAL_ADC_STATE_REG_EOC为转换完成标志位
+		{
+			ADC_Value=HAL_ADC_GetState(&hadc1);																		//读取A/D转换数据，数据为12位
+		}
+		Vrt=(Vref/(4096-1))*ADC_Value;			//计算热敏电阻两端电压
+		Rrt=Vrt/((Vref-Vrt)/Res);						//计算热敏电阻阻值
+		GetTemp=0.05*Rrt;										//计算温度
+		DC=Factor*(GetTemp-BaseNum)+BaseDC;	//计算占空比
+		while(DC>BaseDC)
+		{
+			DC--;
+			__HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3,DC);
+			HAL_Delay(1);
+		}
   }
   /* USER CODE END 3 */
 }
