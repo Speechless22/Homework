@@ -127,18 +127,18 @@ int main(void)
 			HAL_Delay(10);			//10ms消抖
 			if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)		//再次判断
 			{
-				BaseNum++;
-			}
-		}
+      BaseNum++;
+		  }
+    }
 		if(HAL_GPIO_ReadPin(KEY2_GPIO_Port,KEY2_Pin)==GPIO_PIN_RESET)
 		{
 			HAL_Delay(10);
 			if(HAL_GPIO_ReadPin(KEY2_GPIO_Port,KEY2_Pin)==GPIO_PIN_RESET)
 			{
-				BaseNum--;
-			}
-		}
-		HAL_Delay(100);
+      BaseNum--;
+		  }
+    }
+		HAL_Delay(200);
 		HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&ADC_Value,sizeof(&ADC_Value));			//启动ADC1的DMA转换
 		HAL_ADC_PollForConversion(&hadc1,50);																		//等待转换结束，超时时间50s
 		if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc1),HAL_ADC_STATE_REG_EOC))			//判断是否设置转换完成标志位，HAL_ADC_STATE_REG_EOC为转换完成标志位
@@ -150,7 +150,8 @@ int main(void)
 			DC=Factor*(GetTemp-BaseNum)+BaseDC;	//计算占空比
 			if(GetTemp>BaseNum)
 			{
-				__HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3,DC);																//启动风扇
+				DC++;
+        __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3,DC);											//启动风扇
 				HAL_Delay(50);
 			}
 			else
