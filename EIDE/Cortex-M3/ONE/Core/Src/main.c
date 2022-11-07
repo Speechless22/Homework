@@ -83,7 +83,7 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Delay(500);
+  HAL_Delay(500);			//延时，待稳定
   HAL_Init();
 
   /* USER CODE BEGIN Init */
