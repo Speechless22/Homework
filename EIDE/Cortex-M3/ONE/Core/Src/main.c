@@ -103,8 +103,14 @@ int main(void)
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+	//KEY初始化？
+	HAL_GPIO_WritePin(KEY1_GPIO_Port,KEY1_Pin,GPIO_PIN_SET);			
+	HAL_GPIO_WritePin(KEY2_GPIO_Port,KEY2_Pin,GPIO_PIN_SET);
 	HAL_ADCEx_Calibration_Start(&hadc1);					//ADC1校准
 	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);			//开启定时器2通道3输出PWM波形
+	//AIN1写入高电平，AIN2写入低电平，电机顺时针转动
+	HAL_GPIO_WritePin(AIN1_GPIO_Port,AIN1_Pin,GPIO_PIN_SET) ;
+  HAL_GPIO_WritePin(AIN2_GPIO_Port,AIN2_Pin,GPIO_PIN_RESET);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -114,27 +120,24 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		while(1)			//按键控制预设温度
+		//按键控制预设温度
+		if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)			//上拉输入按下为0（RESET）
 		{
-			if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)
+			HAL_Delay(10);			//10ms消抖
+			if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)		//再次判断
 			{
-				HAL_Delay(10);
-				if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)
-				{
-					BaseNum++;
-				}
+				BaseNum++;
 			}
+		}
+		if(HAL_GPIO_ReadPin(KEY2_GPIO_Port,KEY2_Pin)==GPIO_PIN_RESET)
+		{
+			HAL_Delay(10);
 			if(HAL_GPIO_ReadPin(KEY2_GPIO_Port,KEY2_Pin)==GPIO_PIN_RESET)
 			{
-				HAL_Delay(10);
-				if(HAL_GPIO_ReadPin(KEY2_GPIO_Port,KEY2_Pin)==GPIO_PIN_RESET)
-				{
-					BaseNum--;
-				}
+				BaseNum--;
 			}
-
 		}
-		HAL_Delay(1000);
+		HAL_Delay(100);
 		HAL_ADC_Start_DMA(&hadc1,(uint32_t*)&ADC_Value,sizeof(&ADC_Value));			//启动ADC1的DMA转换
 		HAL_ADC_PollForConversion(&hadc1,50);																		//等待转换结束，超时时间50s
 		if(HAL_IS_BIT_SET(HAL_ADC_GetState(&hadc1),HAL_ADC_STATE_REG_EOC))			//判断是否设置转换完成标志位，HAL_ADC_STATE_REG_EOC为转换完成标志位
@@ -142,15 +145,18 @@ int main(void)
 			ADC_Value=HAL_ADC_GetState(&hadc1);	//读取A/D转换数据，数据为12位
 			Vrt=(Vref/(4096-1))*ADC_Value;			//计算热敏电阻两端电压
 			Rrt=Vrt/((Vref-Vrt)/Res);						//计算热敏电阻阻值
-			GetTemp=0.05*Rrt;										//计算温度
+			GetTemp=0.05*Rrt;										//直接计算温度，不使用对照表
 			DC=Factor*(GetTemp-BaseNum)+BaseDC;	//计算占空比
-			if(DC>BaseDC)
+			if(GetTemp>BaseNum)
 			{
-																				//启动风扇
+				__HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_3,DC);																//启动风扇
+				HAL_Delay(50);
 			}
 			else
 			{
-																					//关闭风扇
+				//AIN1和AIN2都写入高电平，电机制动
+				HAL_GPIO_WritePin(AIN1_GPIO_Port,AIN1_Pin,GPIO_PIN_SET);																	//关闭风扇
+				HAL_GPIO_WritePin(AIN2_GPIO_Port,AIN2_Pin,GPIO_PIN_SET);
 			}
 		}
   }
