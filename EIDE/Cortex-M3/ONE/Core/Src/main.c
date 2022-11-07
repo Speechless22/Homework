@@ -103,7 +103,7 @@ int main(void)
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-	//KEY初始化？
+	//KEY初始化
 	HAL_GPIO_WritePin(KEY1_GPIO_Port,KEY1_Pin,GPIO_PIN_SET);			
 	HAL_GPIO_WritePin(KEY2_GPIO_Port,KEY2_Pin,GPIO_PIN_SET);
 	HAL_ADCEx_Calibration_Start(&hadc1);					//ADC1校准
@@ -155,7 +155,7 @@ int main(void)
 			else
 			{
 				//AIN1和AIN2都写入高电平，电机制动
-				HAL_GPIO_WritePin(AIN1_GPIO_Port,AIN1_Pin,GPIO_PIN_SET);																	//关闭风扇
+				HAL_GPIO_WritePin(AIN1_GPIO_Port,AIN1_Pin,GPIO_PIN_SET);																	
 				HAL_GPIO_WritePin(AIN2_GPIO_Port,AIN2_Pin,GPIO_PIN_SET);
 			}
 		}
