@@ -103,7 +103,7 @@ int main(void)
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-	//KEY初始�?
+	//KEY初始化
 	HAL_GPIO_WritePin(KEY1_GPIO_Port,KEY1_Pin,GPIO_PIN_SET);			
 	HAL_GPIO_WritePin(KEY2_GPIO_Port,KEY2_Pin,GPIO_PIN_SET);
 	HAL_ADCEx_Calibration_Start(&hadc1);					//ADC1校准
