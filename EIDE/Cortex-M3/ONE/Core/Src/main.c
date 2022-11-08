@@ -49,7 +49,7 @@
 #define Vref 3.3			//参考电压
 #define Res 10000			//参考电阻
 #define BaseDC 500		//占空比基准值
-#define Factor 10			//系数
+#define Factor 1			//占空比系数
 
 uint16_t BaseNum=20;		//预设温度
 uint16_t GetTemp;				//当前温度
@@ -57,7 +57,7 @@ uint16_t ADC_Value;			//存放A/D转换结果
 uint16_t Vrt;						//存放热敏电阻两端电压
 uint16_t Rrt;						//存放热敏电阻阻值
 
-uint16_t DC;						//定义一个PWM占空比变量			
+uint16_t DC;						//定义一个PWM占空比变量		
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -83,7 +83,6 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Delay(500);			//延时，待稳定
   HAL_Init();
 
   /* USER CODE BEGIN Init */
@@ -104,7 +103,7 @@ int main(void)
   MX_TIM2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-	//KEY初始化
+	//KEY初始�?
 	HAL_GPIO_WritePin(KEY1_GPIO_Port,KEY1_Pin,GPIO_PIN_SET);			
 	HAL_GPIO_WritePin(KEY2_GPIO_Port,KEY2_Pin,GPIO_PIN_SET);
 	HAL_ADCEx_Calibration_Start(&hadc1);					//ADC1校准
@@ -125,7 +124,7 @@ int main(void)
 		if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)			//上拉输入按下为0（RESET）
 		{
 			HAL_Delay(10);			//10ms消抖
-			if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)		//再次判断
+			if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)		//再次确定
 			{
       BaseNum++;
 		  }
