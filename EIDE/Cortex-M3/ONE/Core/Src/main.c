@@ -56,6 +56,7 @@ uint16_t GetTemp;				//当前温度
 uint16_t ADC_Value;			//存放A/D转换结果
 uint16_t Vrt;						//存放热敏电阻两端电压
 uint16_t Rrt;						//存放热敏电阻阻值
+uint16_t Receive_data;  //存放自定义预设温度
 
 uint16_t DC;						//定义一个PWM占空比变量		
 /* USER CODE END PV */
@@ -121,6 +122,14 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    //串口读取预设温度
+    Receive_data=100;
+    printf("输入预设温度：");
+    Receive_data=getint();      //读取控制台输入数字
+    if(Receive_data!=100)
+    {
+      BaseNum=Receive_data;
+    }
 		//按键控制预设温度
 		if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)			//上拉输入按下为0（RESET）
 		{
@@ -147,6 +156,7 @@ int main(void)
 			Vrt=(Vref/(4096-1))*ADC_Value;			//计算热敏电阻两端电压
 			Rrt=Vrt/((Vref-Vrt)/Res);						//计算热敏电阻阻值
 			GetTemp=0.05*Rrt;										//直接计算温度，不使用对照表
+      printf("当前环境温度%d摄氏度\n",GetTemp);//串口打印
 			DC=Factor*(GetTemp-BaseNum)+BaseDC;	//计算占空比
 			if(GetTemp>BaseNum)
 			{
