@@ -56,7 +56,7 @@ uint16_t GetTemp;				//当前温度
 uint16_t ADC_Value;			//存放A/D转换结果
 uint16_t Vrt;						//存放热敏电阻两端电压
 uint16_t Rrt;						//存放热敏电阻阻值
-uint8_t Receive_data;  //存放自定义预设温度
+uint32_t Receive_data;  //存放自定义预设温度
 
 uint16_t DC;						//定义一个PWM占空比变量		
 /* USER CODE END PV */
@@ -125,7 +125,8 @@ int main(void)
     /* USER CODE BEGIN 3 */
     //串口读取预设温度
     Receive_data=100;
-    Receive_data=getchar();     //读取控制台输入数字
+		scanf("%d",&Receive_data);			//读取控制台输入数字
+//    Receive_data=getchar();     //读取控制台输入数字
     if(Receive_data!=100)
     {
       BaseNum=Receive_data;
