@@ -26,7 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,7 +56,7 @@ uint16_t GetTemp;				//当前温度
 uint16_t ADC_Value;			//存放A/D转换结果
 uint16_t Vrt;						//存放热敏电阻两端电压
 uint16_t Rrt;						//存放热敏电阻阻值
-uint16_t Receive_data;  //存放自定义预设温度
+uint8_t Receive_data;  //存放自定义预设温度
 
 uint16_t DC;						//定义一个PWM占空比变量		
 /* USER CODE END PV */
@@ -113,6 +113,7 @@ int main(void)
 	//AIN1写入高电平，AIN2写入低电平，电机顺时针转动
 	HAL_GPIO_WritePin(AIN1_GPIO_Port,AIN1_Pin,GPIO_PIN_SET) ;
   HAL_GPIO_WritePin(AIN2_GPIO_Port,AIN2_Pin,GPIO_PIN_RESET);
+  printf("===输入预设温度（回车确定）===");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -124,8 +125,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
     //串口读取预设温度
     Receive_data=100;
-    printf("输入预设温度：");
-    Receive_data=getint();      //读取控制台输入数字
+    Receive_data=getchar();     //读取控制台输入数字
     if(Receive_data!=100)
     {
       BaseNum=Receive_data;

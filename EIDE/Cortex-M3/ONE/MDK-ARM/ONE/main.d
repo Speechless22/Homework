@@ -35,3 +35,4 @@ one\main.o: ../Core/Inc/dma.h
 one\main.o: ../Core/Inc/tim.h
 one\main.o: ../Core/Inc/usart.h
 one\main.o: ../Core/Inc/gpio.h
+one\main.o: C:\Users\Speec\AppData\Local\Programs\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h

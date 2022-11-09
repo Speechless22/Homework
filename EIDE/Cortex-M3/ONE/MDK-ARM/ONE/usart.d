@@ -31,3 +31,4 @@ one\usart.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 one\usart.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 one\usart.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 one\usart.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+one\usart.o: C:\Users\Speec\AppData\Local\Programs\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
