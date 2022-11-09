@@ -78,6 +78,7 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+  HAL_Delay(200);           //上电延迟2秒
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -126,7 +127,7 @@ int main(void)
 			HAL_Delay(10);			//10ms消抖
 			if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)		//再次确定
 			{
-      BaseNum++;
+        BaseNum++;
 		  }
     }
 		if(HAL_GPIO_ReadPin(KEY2_GPIO_Port,KEY2_Pin)==GPIO_PIN_RESET)
@@ -134,7 +135,7 @@ int main(void)
 			HAL_Delay(10);
 			if(HAL_GPIO_ReadPin(KEY2_GPIO_Port,KEY2_Pin)==GPIO_PIN_RESET)
 			{
-      BaseNum--;
+        BaseNum--;
 		  }
     }
 		HAL_Delay(200);
