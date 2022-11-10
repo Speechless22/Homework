@@ -126,7 +126,7 @@ int main(void)
     //串口读取预设温度
     Receive_data=100;
 		scanf("%d",&Receive_data);			//读取控制台输入数字
-//    Receive_data=getchar();     //读取控制台输入数字
+//    Receive_data=getint();     //读取控制台输入数字
     if(Receive_data!=100)
     {
       BaseNum=Receive_data;

@@ -6,7 +6,7 @@
   <Header>### uVision Project, (C) Keil Software</Header>
 
   <PrjGuiSettings>
-    <LastAddFilePath></LastAddFilePath>
+    <LastAddFilePath>C:\Users\Speec\Projects\Homework\EIDE\Cortex-M3\ONE\Core\Src</LastAddFilePath>
   </PrjGuiSettings>
 
   <ViewPool/>
@@ -1865,9 +1865,9 @@
       <ActiveTab>0</ActiveTab>
       <Doc>
         <Name>../Core/Src/main.c</Name>
-        <ColumnNumber>27</ColumnNumber>
-        <TopLine>110</TopLine>
-        <CurrentLine>132</CurrentLine>
+        <ColumnNumber>14</ColumnNumber>
+        <TopLine>94</TopLine>
+        <CurrentLine>126</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
