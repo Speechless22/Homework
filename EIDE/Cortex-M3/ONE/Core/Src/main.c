@@ -113,7 +113,7 @@ int main(void)
 	//AIN1写入高电平，AIN2写入低电平，电机顺时针转动
 	HAL_GPIO_WritePin(AIN1_GPIO_Port,AIN1_Pin,GPIO_PIN_SET) ;
   HAL_GPIO_WritePin(AIN2_GPIO_Port,AIN2_Pin,GPIO_PIN_RESET);
-  printf("===输入预设温度（回车确定）===");
+  printf("===The default temperature is %d degrees Celsius, enter a positive integer and press Enter to change===\n",BaseNum);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -130,6 +130,7 @@ int main(void)
     if(Receive_data!=100)
     {
       BaseNum=Receive_data;
+      printf("The preset temperature has been set to %d degrees Celsius\n",BaseNum);
     }
 		//按键控制预设温度
 		if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)			//上拉输入按下为0（RESET）
@@ -138,6 +139,7 @@ int main(void)
 			if(HAL_GPIO_ReadPin(KEY1_GPIO_Port,KEY1_Pin)==GPIO_PIN_RESET)		//再次确定
 			{
         BaseNum++;
+        printf("The preset temperature has been set to %d degrees Celsius\n",BaseNum);
 		  }
     }
 		if(HAL_GPIO_ReadPin(KEY2_GPIO_Port,KEY2_Pin)==GPIO_PIN_RESET)
@@ -146,6 +148,7 @@ int main(void)
 			if(HAL_GPIO_ReadPin(KEY2_GPIO_Port,KEY2_Pin)==GPIO_PIN_RESET)
 			{
         BaseNum--;
+        printf("The preset temperature has been set to %d degrees Celsius\n",BaseNum);
 		  }
     }
 		HAL_Delay(200);
@@ -157,7 +160,7 @@ int main(void)
 			Vrt=(Vref/(4096-1))*ADC_Value;			//计算热敏电阻两端电压
 			Rrt=Vrt/((Vref-Vrt)/Res);						//计算热敏电阻阻值
 			GetTemp=0.05*Rrt;										//直接计算温度，不使用对照表
-      printf("当前环境温度%d摄氏度\n",GetTemp);//串口打印
+      printf("Current ambient temperature %d degrees Celsius\n",GetTemp);//串口打印
 			DC=Factor*(GetTemp-BaseNum)+BaseDC;	//计算占空比
 			if(GetTemp>BaseNum)
 			{
