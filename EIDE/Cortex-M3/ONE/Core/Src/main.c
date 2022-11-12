@@ -54,7 +54,7 @@
 uint16_t BaseNum=20;		//预设温度
 uint16_t GetTemp;				//当前温度
 uint16_t ADC_Value;			//存放A/D转换结果
-uint16_t Vrt;						//存放热敏电阻两端电压
+uint16_t Vrt;						  //存放热敏电阻两端电压
 uint16_t Rrt;						//存放热敏电阻阻值
 uint32_t Receive_data;  //存放自定义预设温度
 
@@ -160,7 +160,10 @@ int main(void)
 			Vrt=(Vref/(4096-1))*ADC_Value;			//计算热敏电阻两端电压
 			Rrt=Vrt/((Vref-Vrt)/Res);						//计算热敏电阻阻值
 			GetTemp=0.05*Rrt;										//直接计算温度，不使用对照表
-      printf("Current ambient temperature %d degrees Celsius\n",GetTemp);//串口打印
+      //串口打印
+      printf("The voltage across the thermistor is %d V",Vrt);
+      printf("Thermistor resistance is %d ohms",Rrt);
+      printf("Current ambient temperature %d degrees Celsius\n",GetTemp);
 			DC=Factor*(GetTemp-BaseNum)+BaseDC;	//计算占空比
 			if(GetTemp>BaseNum)
 			{
